@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_prototype/screens/splash.dart';
 import 'screens/home.dart';
 
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/Home': (BuildContext context) => new Home(),
       },
-      home: new Home(),
+      home: new Splash(),
     );
   }
 }
