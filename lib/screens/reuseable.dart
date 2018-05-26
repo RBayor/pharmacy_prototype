@@ -32,19 +32,7 @@ class MyDrawer extends Drawer {
             //addRepaintBoundaries: true,
             children: <Widget>[
               Container(
-                /**
-                 * 
-                 * 
-                 * 
-                 * 
-                 * Bandoh delete this and work with the color here
-                 * 
-                 * 
-                 * 
-                 * 
-                 * 
-                 */
-                color: Colors.green,
+                color: Colors.green[300],
                 child: Column(
                   children: <Widget>[
                     SizedBox(
