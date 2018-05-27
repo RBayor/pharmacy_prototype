@@ -18,7 +18,7 @@ class _State extends State<Home> {
       child: new GridView.count(
         crossAxisCount: 2,
         children: <Widget>[
-          //New Grid Class can be found at lib/customWidget/Grid.dart
+          //Grid Class can be found at lib/customWidget/Grid.dart
           new Grid("Ashanti"),
           new Grid("Greater Accra"),
           new Grid("Northen"),
