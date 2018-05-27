@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 
+
 class Grid extends StatefulWidget {
   @override
   State createState() => new _Grid();
@@ -46,7 +47,9 @@ class _Grid extends State<Grid> with SingleTickerProviderStateMixin {
           child: new Column(
             children: <Widget>[
               new IconButton(
-                onPressed: () {},
+                // Working on a way to link the regions to the search page passing 
+                // the context
+                onPressed: () {Navigator.of(context).pushNamed("/Search");},
                 iconSize: iconanim.value * 50.0,
                 icon: new Icon(Icons.location_city),
               ),

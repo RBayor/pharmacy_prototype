@@ -16,14 +16,14 @@ class MyAppBar extends AppBar {
 }
 
 class MyDrawer extends Drawer {
-  final appBarLogo = Hero(
+ /* final appBarLogo = Hero(
     tag: 'hero',
     child: CircleAvatar(
       backgroundColor: Colors.transparent,
       radius: 50.0,
       child: Image.asset('images/appbar_icon.png'),
     ),
-  );
+  );*/
 
   MyDrawer({Key key, Widget child, BuildContext context})
       : super(

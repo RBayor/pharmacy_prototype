@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pharmacy_prototype/screens/splash.dart';
 import 'screens/home.dart';
+import 'screens/search.dart';
 
 //emulator -avd Nexus_5_API_27
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Navigation',
       routes: <String, WidgetBuilder>{
         '/Home': (BuildContext context) => new Home(),
+        '/Search': (BuildContext context) => new MedicationSearch(),
       },
       home: new Splash(),
     );
