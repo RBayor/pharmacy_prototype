@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "356469878815",
+    "firebase_url": "https://virtualpharm-73624.firebaseio.com",
+    "project_id": "virtualpharm-73624",
+    "storage_bucket": "virtualpharm-73624.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356469878815:android:d71aade9830b0bec",
+        "android_client_info": {
+          "package_name": "com.example.pharmacyprototype"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356469878815-f3s7qkl73729r3sr67h2hg5qiink891r.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "356469878815-f3s7qkl73729r3sr67h2hg5qiink891r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR2GNGMTQYdv72lpY7whB6DHvbqZsrtLY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
