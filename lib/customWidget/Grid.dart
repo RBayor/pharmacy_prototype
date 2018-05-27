@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/animation.dart';
 
 class Grid extends StatefulWidget{
   @override
@@ -7,14 +8,40 @@ class Grid extends StatefulWidget{
   Grid(this.city);
 }
 
-class _Grid extends State<Grid>{
+class _Grid extends State<Grid> with SingleTickerProviderStateMixin{
+
+Animation coloranimation;
+Animation iconanim;
+AnimationController _controller;
+
+@override
+void initState() {
+    _controller = AnimationController(duration: new Duration(milliseconds: 4000),vsync: this);
+    coloranimation = new ColorTween(begin: Colors.white,end: Colors.lime[50]).animate(_controller);
+    iconanim = new CurvedAnimation(parent: _controller,curve: Curves.bounceInOut);
+    _controller.addListener((){
+      this.setState((){
+
+      });
+    });
+    _controller.forward();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+      _controller.dispose();
+      super.dispose();
+    }
+
+
   @override
   Widget build(BuildContext context) {
       // These Are Icon Buttons so We cant do onpressed from here
       return new Container(
             margin: const EdgeInsets.all(10.0),
             child: new Card(
-              color: Colors.lime[50],
+              color: coloranimation.value,
               elevation: 4.0,
             child: new Container(
             margin: const EdgeInsets.all(40.0),
@@ -22,7 +49,7 @@ class _Grid extends State<Grid>{
               children: <Widget>[
                 new IconButton(
             onPressed: (){},
-            iconSize: 50.0,
+            iconSize: iconanim.value*50.0,
             icon: new Icon(Icons.location_city),
           ),
           new Container(
