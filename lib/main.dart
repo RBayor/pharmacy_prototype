@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_prototype/screens/splash.dart';
 import 'screens/home.dart';
 
-
 //emulator -avd Nexus_5_API_27
 
-void main(){
+void main() {
   runApp(new MyApp());
 }
 
