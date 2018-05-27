@@ -16,7 +16,7 @@ class _Grid extends State<Grid> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     _controller = AnimationController(
-        duration: new Duration(milliseconds: 4000), vsync: this);
+        duration: new Duration(milliseconds: 3000), vsync: this);
     coloranimation = new ColorTween(begin: Colors.white, end: Colors.lime[50])
         .animate(_controller);
     iconanim =
@@ -36,7 +36,7 @@ class _Grid extends State<Grid> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    // These Are Icon Buttons so We cant do onpressed from here
+    // These Are Icon Buttons so We can do onpressed from here
     return new Container(
       margin: const EdgeInsets.all(10.0),
       child: new Card(
