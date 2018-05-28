@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_prototype/customWidget/Grid.dart';
 import 'reuseable.dart';
 
+
+ // This is the home screen of the app.
+ // User will see a list of regions from which he can select.
+ // Selecting a region will call on the search.dart class.
+
+
 class Home extends StatefulWidget {
   _State createState() => new _State();
 }

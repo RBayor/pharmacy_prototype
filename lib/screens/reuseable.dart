@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+
+// reuseable.dart contains classes that will be repeated throught the program.
+
+// Provides the appbar
 class MyAppBar extends AppBar {
   MyAppBar({Key key, Widget title})
       : super(
@@ -15,15 +19,9 @@ class MyAppBar extends AppBar {
             ]);
 }
 
+
+// Provides the drawer for the app.
 class MyDrawer extends Drawer {
- /* final appBarLogo = Hero(
-    tag: 'hero',
-    child: CircleAvatar(
-      backgroundColor: Colors.transparent,
-      radius: 50.0,
-      child: Image.asset('images/appbar_icon.png'),
-    ),
-  );*/
 
   MyDrawer({Key key, Widget child, BuildContext context})
       : super(

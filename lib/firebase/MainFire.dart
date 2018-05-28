@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MainFire {
 
-  /**
-   * These are all dummy data 
-   */
+   /// These are all dummy data 
   createpharmdet() {
     CollectionReference cr = Firestore.instance.collection("PharmacyDetails");
     cr.add({
