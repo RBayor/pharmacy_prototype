@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/Home': (BuildContext context) => new Home(),
         '/Search': (BuildContext context) => new MedicationSearch(),
-        '/stock': (BuildContext context) => new Stock(postnum),
+        '/stock': (BuildContext context) => new Stock(postnum,name),
       },
       home: new Splash(),
     );

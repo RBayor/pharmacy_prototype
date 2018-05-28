@@ -4,6 +4,7 @@ import 'package:pharmacy_prototype/screens/reuseable.dart';
 import 'package:flutter/animation.dart';
 
 int postnum;
+String name;
 
 class MedicationSearch extends StatefulWidget {
   _State createState() => new _State();
@@ -36,7 +37,7 @@ class _State extends State<MedicationSearch>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyAppBar(),
+      appBar: new MyAppBar(title: new Text("Pharmacies"),),
       drawer: new MyDrawer(),
       body: new StreamBuilder(
         stream: Firestore.instance.collection('PharmacyDetails').snapshots(),
@@ -78,6 +79,7 @@ class _State extends State<MedicationSearch>
                               iconSize: (3 + animation.value) * 9,
                               onPressed: () {
                                 postnum = index;
+                                name = ds['Name'];
                                 Navigator.of(context).pushNamed("/stock");
                               },
                               color: Colors.red,

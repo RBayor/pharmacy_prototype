@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_prototype/screens/reuseable.dart';
 
 class Stock extends StatefulWidget {
+
   @override
   _StockState createState() => new _StockState();
 
   final int postid;
-  Stock(this.postid);
+  final pharmname;
+  Stock(this.postid,this.pharmname);
 }
 
 class _StockState extends State<Stock> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new MyAppBar(),
+      appBar: new MyAppBar(title: new Text("${widget.pharmname}"),),
       drawer: new MyDrawer(),
       body: new StreamBuilder(
         stream: Firestore.instance.collection('PharmacyDetails').snapshots(),
