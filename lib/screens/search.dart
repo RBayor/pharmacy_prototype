@@ -37,7 +37,9 @@ class _State extends State<MedicationSearch>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyAppBar(title: new Text("Pharmacies"),),
+      appBar: new MyAppBar(
+        title: new Text("Pharmacies"),
+      ),
       drawer: new MyDrawer(),
       body: new StreamBuilder(
         stream: Firestore.instance.collection('PharmacyDetails').snapshots(),
@@ -56,6 +58,7 @@ class _State extends State<MedicationSearch>
                     children: <Widget>[
                       new Container(
                         margin: const EdgeInsets.all(20.0),
+                        //we'll put drug picture here
                         child: new CircleAvatar(
                           child: new Icon(Icons.person_add),
                           radius: 30.0,
@@ -64,10 +67,19 @@ class _State extends State<MedicationSearch>
                       new Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Text("Name: ${ds['Name']}"),
-                          new Text("Email: ${ds['E-mail']}"),
-                          new Text("Phone Number: ${ds['PhoneNumber']}"),
-                          new Text("Location: ${ds['Location']}"),
+                          new Text("Drug Name: ${ds['Stock']['StockName']}"),
+                          new Text("Price: ${ds['Stock']['StockPrice']}"),
+                          checkAvail(ds),
+                          new Container(
+                            margin: EdgeInsets.only(
+                              top: 5.0
+                            ),
+                        decoration: new BoxDecoration(
+                          color: Colors.blue
+                        ),
+                        width: 200.0,
+                        height: 2.0,
+                      ),
                         ],
                       ),
                       new Container(
@@ -77,12 +89,8 @@ class _State extends State<MedicationSearch>
                             new IconButton(
                               icon: new Icon(Icons.arrow_forward),
                               iconSize: (3 + animation.value) * 9,
-                              onPressed: () {
-                                postnum = index;
-                                name = ds['Name'];
-                                Navigator.of(context).pushNamed("/stock");
-                              },
-                              color: Colors.red,
+                              onPressed: () {},
+                              color: Colors.blue,
                             ),
                             new Text(
                               "Stock",
@@ -100,5 +108,14 @@ class _State extends State<MedicationSearch>
         },
       ),
     );
+  }
+
+//Check if Stock is Available
+  Widget checkAvail(DocumentSnapshot d) {
+    if (d['Stock']['Available'])
+      return new Text("Quantity: ${d['Stock']['Quantity']}");
+    else {
+      return new Text("Finished");
+    }
   }
 }
