@@ -18,13 +18,14 @@ class _State extends State<MedicationSearch>
   @override
   void initState() {
     controller = new AnimationController(
-        duration: new Duration(milliseconds: 800), vsync: this);
+        duration: new Duration(milliseconds: 3000), vsync: this);
     animation =
         new CurvedAnimation(parent: controller, curve: Curves.easeInOut);
     controller.addListener(() {
       this.setState(() {});
     });
     controller.repeat();
+    
     super.initState();
   }
 
@@ -60,15 +61,15 @@ class _State extends State<MedicationSearch>
                         margin: const EdgeInsets.all(20.0),
                         //we'll put drug picture here
                         child: new CircleAvatar(
-                          child: new Icon(Icons.person_add),
+                          child: new Icon(Icons.local_pharmacy),
                           radius: 30.0,
                         ),
                       ),
                       new Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Text("Drug Name: ${ds['Stock']['StockName']}"),
-                          new Text("Price: ${ds['Stock']['StockPrice']}"),
+                          new Text("${ds['Stock']['StockName']}"),
+                          new Text("Price: Ghs ${ds['Stock']['StockPrice']}"),
                           checkAvail(ds),
                           new Container(
                             margin: EdgeInsets.only(
@@ -87,7 +88,7 @@ class _State extends State<MedicationSearch>
                         child: new Column(
                           children: <Widget>[
                             new IconButton(
-                              icon: new Icon(Icons.arrow_forward),
+                              icon: new Icon(Icons.arrow_forward_ios),
                               iconSize: (3 + animation.value) * 9,
                               onPressed: () {},
                               color: Colors.blue,

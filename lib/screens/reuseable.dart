@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-
 // reuseable.dart contains classes that will be repeated throught the program.
 
 // Provides the appbar
 class MyAppBar extends AppBar {
+  
   MyAppBar({Key key, Widget title})
       : super(
             key: key,
@@ -18,7 +18,6 @@ class MyAppBar extends AppBar {
               ),
             ]);
 }
-
 
 // Provides the drawer for the app.
 class MyDrawer extends Drawer {
