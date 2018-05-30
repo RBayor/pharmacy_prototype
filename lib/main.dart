@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_prototype/screens/DisplayPharmacies.dart';
 import 'package:pharmacy_prototype/screens/splash.dart';
 import 'screens/home.dart';
 import 'screens/search.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/Home': (BuildContext context) => new Home(),
         '/Search': (BuildContext context) => new MedicationSearch(),
+        '/Pharmacies': (BuildContext context)=> new DisplayPharmacies(drugname),
       },
       home: new Splash(),
     );

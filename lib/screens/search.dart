@@ -5,6 +5,7 @@ import 'package:flutter/animation.dart';
 
 int postnum;
 String name;
+String drugname;
 
 class MedicationSearch extends StatefulWidget {
   _State createState() => new _State();
@@ -90,7 +91,10 @@ class _State extends State<MedicationSearch>
                             new IconButton(
                               icon: new Icon(Icons.arrow_forward_ios),
                               iconSize: (3 + animation.value) * 9,
-                              onPressed: () {},
+                              onPressed: () {
+                                drugname = "${ds['Stock']['StockName']}";
+                                Navigator.of(context).pushNamed("/Pharmacies");
+                                },
                               color: Colors.blue,
                             ),
                             new Text(
