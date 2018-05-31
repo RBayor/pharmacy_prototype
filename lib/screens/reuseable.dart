@@ -66,7 +66,7 @@ class MyDrawer extends Drawer {
                       leading: Icon(Icons.help),
                     ),
                     Divider(
-                      height: 20.0,
+                      color: Colors.lightBlue[100],
                     ),
                     ListTile(
                         title: Text('Settings'), leading: Icon(Icons.settings)),
@@ -77,7 +77,7 @@ class MyDrawer extends Drawer {
                         title: Text('Terms of Service'),
                         leading: Icon(Icons.info)),
                     Divider(
-                      height: 10.0,
+                      color: Colors.lightBlue[100],
                     ),
                     ListTile(
                         title: Text('Donate'),
