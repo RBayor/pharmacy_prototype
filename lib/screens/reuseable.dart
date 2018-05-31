@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 
 // Provides the appbar
 class MyAppBar extends AppBar {
-  
   MyAppBar({Key key, Widget title})
       : super(
             key: key,
             title: title,
             centerTitle: true,
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.lightBlueAccent,
             actions: <Widget>[
               new IconButton(
                 icon: new Icon(Icons.more_vert),
@@ -21,7 +20,6 @@ class MyAppBar extends AppBar {
 
 // Provides the drawer for the app.
 class MyDrawer extends Drawer {
-
   MyDrawer({Key key, Widget child, BuildContext context})
       : super(
           key: key,
@@ -29,59 +27,64 @@ class MyDrawer extends Drawer {
             //addRepaintBoundaries: true,
             children: <Widget>[
               Container(
-                color: Colors.green[300],
+                padding: EdgeInsets.all(14.0),
+                color: Colors.lightBlueAccent,
                 child: Column(
                   children: <Widget>[
-                    SizedBox(
-                      height: 30.0,
-                    ),
                     UserAccountsDrawerHeader(
                       accountEmail: null,
                       accountName: null,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('images/appbar_icon.png'))),
+                              image: AssetImage('images/appbar_iconT.png'))),
                     ),
                     SizedBox(
-                      height: 30.0,
+                      height: 10.0,
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 20.0,
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    ListTile(
+                      title: Text('Home'),
+                      leading: Icon(Icons.home),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pushNamed('/Home');
+                      },
+                    ),
+                    ListTile(title: Text('Maps'), leading: Icon(Icons.map)),
+                    ListTile(
+                      title: Text('Pharmacies'),
+                      leading: Icon(Icons.local_pharmacy),
+                    ),
+                    ListTile(
+                      title: Text('Health Tips'),
+                      leading: Icon(Icons.help),
+                    ),
+                    Divider(
+                      height: 20.0,
+                    ),
+                    ListTile(
+                        title: Text('Settings'), leading: Icon(Icons.settings)),
+                    ListTile(
+                        title: Text('About Us'),
+                        leading: Icon(Icons.local_pharmacy)),
+                    ListTile(
+                        title: Text('Terms of Service'),
+                        leading: Icon(Icons.info)),
+                    Divider(
+                      height: 10.0,
+                    ),
+                    ListTile(
+                        title: Text('Donate'),
+                        leading: Icon(Icons.monetization_on)),
+                  ],
+                ),
               ),
-              ListTile(
-                title: Text('Home'),
-                leading: Icon(Icons.home),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pushNamed('/Home');
-                },
-              ),
-              ListTile(
-                title: Text('Health Tips'),
-                leading: Icon(Icons.help),
-              ),
-              ListTile(title: Text('Maps'), leading: Icon(Icons.map)),
-              ListTile(
-                title: Text('Pharmacies'),
-                leading: Icon(Icons.local_pharmacy),
-              ),
-              Divider(
-                height: 20.0,
-              ),
-              ListTile(
-                  title: Text('Terms of Service'), leading: Icon(Icons.info)),
-              ListTile(
-                  title: Text('About Us'), leading: Icon(Icons.local_pharmacy)),
-              ListTile(title: Text('Settings'), leading: Icon(Icons.settings)),
-              Divider(
-                height: 10.0,
-              ),
-              ListTile(
-                  title: Text('Donate'), leading: Icon(Icons.monetization_on)),
             ],
           ),
         );

@@ -40,7 +40,7 @@ class _State extends State<MedicationSearch>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new MyAppBar(
-        title: new Text("Pharmacies"),
+        title: new Text("Medication"),
       ),
       drawer: new MyDrawer(),
       body: new StreamBuilder(
