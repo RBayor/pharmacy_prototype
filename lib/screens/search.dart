@@ -44,7 +44,7 @@ class _State extends State<MedicationSearch>
       ),
       drawer: new MyDrawer(),
       body: new StreamBuilder(
-        stream: Firestore.instance.collection('PharmacyDetails').snapshots(),
+        stream: Firestore.instance.collection('Drugs').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return new Center(
@@ -52,9 +52,9 @@ class _State extends State<MedicationSearch>
             );
           } else {
             return new ListView.builder(
-              itemCount: snapshot.data.documents.length,
+              itemCount: snapshot.data.documents[0]['Drugs'].length,
               itemBuilder: (context, index) {
-                DocumentSnapshot ds = snapshot.data.documents[index];
+                DocumentSnapshot ds = snapshot.data.documents[0];
                 return new Container(
                   child: new Row(
                     children: <Widget>[
@@ -69,9 +69,9 @@ class _State extends State<MedicationSearch>
                       new Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Text("${ds['Stock']['StockName']}"),
-                          new Text("Price: Ghs ${ds['Stock']['StockPrice']}"),
-                          checkAvail(ds),
+                          new Text("${ds['Drugs'][index]}"),
+                        //  new Text("Price: Ghs ${ds['Stock']['StockPrice']}"),
+                          //checkAvail(ds),
                           new Container(
                             margin: EdgeInsets.only(
                               top: 5.0
@@ -92,7 +92,7 @@ class _State extends State<MedicationSearch>
                               icon: new Icon(Icons.arrow_forward_ios),
                               iconSize: (3 + animation.value) * 9,
                               onPressed: () {
-                                drugname = "${ds['Stock']['StockName']}";
+                                drugname = "${ds['Drugs'][index]}";
                                 Navigator.of(context).pushNamed("/Pharmacies");
                                 },
                               color: Colors.blue,

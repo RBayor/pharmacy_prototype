@@ -37,7 +37,7 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new MyAppBar(
-        title: new Text("Pharmacies"),
+        title: new Text(widget.drug),
       ),
       body: new Container(
         child: new StreamBuilder(
@@ -72,23 +72,18 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
   }
 
   Widget getpharm(DocumentSnapshot d) {
-    if ("${d['Stock']['StockName']}" == "${widget.drug}") {
-      return new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          new Text("Pharmacy Name: ${d['Name']}"),
-          new Container(
-            margin: EdgeInsets.only(top: 15.0),
-            decoration: new BoxDecoration(color: Colors.blue),
-            width: 200.0,
-            height: 2.0,
-          ),
-        ],
-      );
-    } else {
-      return new Center(
-        child: new Text("Nothing To Display Here"),
-      );
-    }
+    return new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        new Text("Pharmacy Name: ${d['Name']}"),
+        new Text("Quantity: ${d['Stock']['Quantity']}"),
+        new Container(
+          margin: EdgeInsets.only(top: 15.0),
+          decoration: new BoxDecoration(color: Colors.blue),
+          width: 200.0,
+          height: 2.0,
+        ),
+      ],
+    );
   }
 }
