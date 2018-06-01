@@ -12,7 +12,7 @@ class _HealthState extends State<Health> {
   var users;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
 
     _fetchData();
