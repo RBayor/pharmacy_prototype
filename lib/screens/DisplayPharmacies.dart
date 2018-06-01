@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pharmacy_prototype/screens/reuseable.dart';
+import 'dart:async';
 
 class DisplayPharmacies extends StatefulWidget {
   final String drug;
@@ -15,10 +16,10 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
   List<DocumentSnapshot> d = [];
   List<int> numbers = [];
   int i = 0;
-  @override
-  void initState() {
+
+  Future<int>getcount()async {
     CollectionReference ds = Firestore.instance.collection("/PharmacyDetails");
-    ds.getDocuments().then((doc) {
+  await  ds.getDocuments().then((doc) {
       doc.documents.forEach((f) {
         d.add(f);
       });
@@ -30,7 +31,12 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
         i++;
       });
     });
+    return null;
+  }
+  @override
+  void initState() {
     super.initState();
+    getcount();
   }
 
   @override
