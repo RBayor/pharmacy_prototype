@@ -3,6 +3,7 @@ import 'package:pharmacy_prototype/screens/DisplayPharmacies.dart';
 import 'package:pharmacy_prototype/screens/splash.dart';
 import 'screens/home.dart';
 import 'screens/search.dart';
+import 'screens/health.dart';
 
 //emulator -avd Nexus_5_API_27
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         '/Home': (BuildContext context) => new Home(),
         '/Search': (BuildContext context) => new MedicationSearch(),
         '/Pharmacies': (BuildContext context)=> new DisplayPharmacies(drugname),
+        '/Health' : (BuildContext context) => new Health(),
       },
       home: new Splash(),
     );

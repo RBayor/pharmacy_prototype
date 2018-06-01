@@ -64,6 +64,10 @@ class MyDrawer extends Drawer {
                     ListTile(
                       title: Text('Health Tips'),
                       leading: Icon(Icons.help),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pushNamed('/Health');
+                      },
                     ),
                     Divider(
                       color: Colors.lightBlue[100],
