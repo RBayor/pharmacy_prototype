@@ -57,57 +57,24 @@ class _State extends State<MedicationSearch>
               itemBuilder: (context, index) {
                 DocumentSnapshot ds = snapshot.data.documents[0];
                 return new Card(
-                  elevation: 3.0,
-                  //color: Colors.lightGreen[100],
-                  child: new Container(
-                    child: new Row(
-                      children: <Widget>[
-                        new Container(
-                          margin: const EdgeInsets.all(20.0),
-                          //we'll put drug picture here
-                          child: new CircleAvatar(
-                            child: new Icon(Icons.local_pharmacy),
-                            radius: 30.0,
-                            backgroundColor: Colors.cyan[100],
-                          ),
-                        ),
-                        new Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            new Text("${ds['Drugs'][index]}",textScaleFactor: 1.2,),
-                            //  new Text("Price: Ghs ${ds['Stock']['StockPrice']}"),
-                            //checkAvail(ds),
-                            new Container(
-                              margin: EdgeInsets.only(top: 5.0),
-                              decoration: new BoxDecoration(color: Colors.cyan),
-                              width: 200.0,
-                              height: 2.0,
-                            ),
-                          ],
-                        ),
-                        new Container(
-                          margin: const EdgeInsets.only(left: 50.0),
-                          child: new Column(
-                            children: <Widget>[
-                              new IconButton(
-                                icon: new Icon(Icons.arrow_forward_ios,color: Colors.cyan,),
-                                iconSize: (3 + animation.value) * 9,
-                                onPressed: () {
-                                  drugname = "${ds['Drugs'][index]}";
-                                  Navigator
-                                      .of(context)
-                                      .pushNamed("/Pharmacies");
-                                },
-                                color: Colors.blue,
-                              ),
-                              new Text(
-                                "Stock",
-                                textScaleFactor: 0.9,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                  child: new Padding(
+                    padding: const EdgeInsets.all(11.0),
+                    child: ListTile(
+                      leading: new CircleAvatar(
+                        child: new Icon(Icons.local_pharmacy),
+                        radius: 30.0,
+                        backgroundColor: Colors.cyan[100],
+                      ),
+                      title: Text(
+                        "${ds['Drugs'][index]}",
+                        textScaleFactor: 1.2,
+                      ),
+                      subtitle: Text(
+                          'We can add a short description here... from firebase ofcus.'),
+                      onTap: () {
+                        drugname = "${ds['Drugs'][index]}";
+                        Navigator.of(context).pushNamed("/Pharmacies");
+                      },
                     ),
                   ),
                 );
