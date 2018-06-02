@@ -37,7 +37,7 @@ void initState() {
   Widget build(BuildContext context) {
       // TODO: implement build
       return new Scaffold(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.cyan,
         body: new Center(
           child: new Container(
           margin: EdgeInsets.only(

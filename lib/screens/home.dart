@@ -24,7 +24,7 @@ class _State extends State<Home> {
       ),
       body: new Container(
         child: new GridView.count(
-          childAspectRatio: 1.6,
+          childAspectRatio: 1.554,
           crossAxisCount: 2,
           children: <Widget>[
             //Grid Class can be found at lib/customWidget/Grid.dart

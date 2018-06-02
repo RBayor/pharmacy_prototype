@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pharmacy_prototype/screens/reuseable.dart';
-import 'dart:async';
 
 class DisplayPharmacies extends StatefulWidget {
   final String drug;
@@ -44,6 +43,7 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.cyan[100],
       appBar: new MyAppBar(
         title: new Text(widget.drug),
       ),
@@ -55,19 +55,32 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
               return new Center(
                 child: new CircularProgressIndicator(),
               );
-            } else {
+            }if(numbers.length==0){
+              return new Center(
+                child: new Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    new Icon(Icons.mood_bad,size: 70.0,),
+                    new Text("Nothing To Show Here Yet")
+                  ],
+                ),
+              );
+            } 
+            else {
               return new ListView.builder(
                 itemCount: drugcount,
                 itemBuilder: (context, index) {
                   DocumentSnapshot ds = snapshot.data.documents[numbers[index]];
-                  return new Container(
-                    child: new Row(
-                      children: <Widget>[
-                        new Container(
-                          margin: EdgeInsets.all(20.0),
-                          child: getpharm(ds),
-                        ),
-                      ],
+                  return new Card(
+                    child: new Container(
+                      child: new Row(
+                        children: <Widget>[
+                          new Container(
+                            margin: EdgeInsets.all(20.0),
+                            child: getpharm(ds),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -84,13 +97,7 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         new Text("Pharmacy Name: ${d['Name']}"),
-        new Text("Quantity: ${d['Stock']['Quantity']}"),
-        new Container(
-          margin: EdgeInsets.only(top: 15.0),
-          decoration: new BoxDecoration(color: Colors.blue),
-          width: 200.0,
-          height: 2.0,
-        ),
+        new Text("Quantity:${d['Stock']['Quantity']}"),
       ],
     );
   }
