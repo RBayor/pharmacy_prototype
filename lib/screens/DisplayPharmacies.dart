@@ -55,32 +55,60 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
               return new Center(
                 child: new CircularProgressIndicator(),
               );
-            }if(numbers.length==0){
+            }
+            if (numbers.length == 0) {
               return new Center(
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    new Icon(Icons.mood_bad,size: 70.0,),
+                    new Icon(
+                      Icons.mood_bad,
+                      size: 70.0,
+                    ),
                     new Text("Nothing To Show Here Yet")
                   ],
                 ),
               );
-            } 
-            else {
+            } else {
               return new ListView.builder(
                 itemCount: drugcount,
                 itemBuilder: (context, index) {
                   DocumentSnapshot ds = snapshot.data.documents[numbers[index]];
                   return new Card(
-                    child: new Container(
-                      child: new Row(
-                        children: <Widget>[
-                          new Container(
-                            margin: EdgeInsets.all(20.0),
-                            child: getpharm(ds),
+                    elevation: 10.0,
+                    margin: EdgeInsets.only(
+                        left: 12.0, right: 12.0, top: 10.0, bottom: 5.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        new Padding(
+                          padding: const EdgeInsets.only(
+                            left: 30.0,
+                            right: 10.0,
+                            top: 10.0,
                           ),
-                        ],
-                      ),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              child: new Icon(Icons.local_pharmacy),
+                              radius: 40.0,
+                              backgroundColor: Colors.cyan[100],
+                            ),
+                            title: getpharm(ds),
+                            subtitle:
+                                Text('distance to the pharmacy could go here'),
+                          ),
+                        ),
+                        ButtonTheme.bar(
+                          child: ButtonBar(
+                            children: <Widget>[
+                              FlatButton(
+                                child: const Text('Locate in Map'),
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 },
@@ -96,8 +124,14 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
     return new Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        new Text("Pharmacy Name: ${d['Name']}"),
-        new Text("Quantity:${d['Stock']['Quantity']}"),
+        new Text(
+          "${d['Name']}",
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        new Text("Price Here: Ghs ${d['Stock']['StockPrice']}"),
       ],
     );
   }
