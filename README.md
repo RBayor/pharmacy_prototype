@@ -11,6 +11,9 @@ This app helps users locate pharmarcies within their vicinity with their precise
 4. User then clicks on the medication and a list of pharmacies is brought up.
 5. From here the user is able to see the price at each pharmacy and the location(a map will be available) of the pharmacy.
 
+##### Health tips page 
+    This page has been edited to contain a list of github users. Currently searching for a top notch heath api
+    to integrate into this page to provide users with a constantly updated list of health tips.
 ### Most of these features are incomplete.
 
 
