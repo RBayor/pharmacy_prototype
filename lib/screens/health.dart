@@ -8,86 +8,67 @@ class Health extends StatefulWidget {
 }
 
 class _HealthState extends State<Health> {
-  var _isLoading = true;
-  var users;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-
     _fetchData();
   }
+
+  List data;
+  final String url = "https://api.github.com/users";
 
   _fetchData() async {
     print("fetching data from network");
 
-    final String url = "https://api.github.com/users/1";
-    final result = await http.get(url);
-
-    if (result.statusCode == 200) {
-      final map = json.decode(result.body);
-
-      final userJson = map;
-      //print(user['id']);
-
-      setState(() {
-        _isLoading = false;
-        this.users = userJson;
-      });
-    }
+    http.Response response = await http
+        .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
+    var holder = json.decode(response.body);
+    setState(() {
+      _isLoading = false;
+      data = holder;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: AppBar(
-        title: Text("Daily Health Tips"),
-        centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.refresh),
-            onPressed: () {
-              print('Refreshing...');
-              setState(() {
-                _isLoading = true;
-              });
-              _fetchData();
-            },
-          )
-        ],
-      ),
-      body: Center(
-        child: _isLoading
-            ? CircularProgressIndicator()
-            : ListView.builder(
-                itemCount:
-                    1, //this.users.length != null ? this.users.length : 0,
-                itemBuilder: (context, i) {
-                  return Column(
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.all(20.0),
+        appBar: AppBar(
+          title: Text("Daily Health Tips"),
+          centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.refresh),
+              onPressed: () {
+                print('Refreshing...');
+                setState(() {
+                  _isLoading = true;
+                });
+                _fetchData();
+              },
+            )
+          ],
+        ),
+        body: Center(
+            child: _isLoading == true
+                ? CircularProgressIndicator()
+                : ListView.builder(
+                    itemCount: data.length != null ? data.length : 0,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        elevation: 5.0,
+                        margin: EdgeInsets.only(
+                            left: 12.0, right: 12.0, top: 10.0, bottom: 5.0),
                         child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Image.network("${this.users['avatar_url']}"),
-                            Container(
-                              height: 10.0,
-                            ),
-                            Text("name: ${this.users['name']}"),
-                            Text("location: ${this.users['location']}"),
-                            Text("followers: ${this.users['followers']}"),
-                            Text("Join GitHub: ${this.users['created_at']}"),
-                            Divider(
-                              color: Colors.lightBlue,
-                            ),
+                            Image.network(data[index]['avatar_url']),
+                            Text('Name: ${data[index]['login']}'),
+                            Text('Acc Type: ${data[index]['type']}')
                           ],
                         ),
-                      ),
-                    ],
-                  );
-                },
-              ),
-      ),
-    );
+                      );
+                    })));
   }
 }

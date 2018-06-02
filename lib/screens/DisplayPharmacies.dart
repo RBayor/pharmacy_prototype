@@ -82,7 +82,7 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         new Padding(
-                          padding: const EdgeInsets.only(
+                          padding:  EdgeInsets.only(
                             left: 30.0,
                             right: 10.0,
                             top: 10.0,
