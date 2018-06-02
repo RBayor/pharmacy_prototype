@@ -17,22 +17,24 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
   List<int> numbers = [];
   int i = 0;
 
-  Future<int>getcount()async {
+  getcount() async {
     CollectionReference ds = Firestore.instance.collection("/PharmacyDetails");
-  await  ds.getDocuments().then((doc) {
+    await ds.getDocuments().then((doc) {
       doc.documents.forEach((f) {
         d.add(f);
       });
-      d.forEach((e) {
-        if (e.data['Stock']['StockName'] == widget.drug) {
-          drugcount++;
-          numbers.add(i);
-        }
-        i++;
+      setState(() {
+        d.forEach((e) {
+          if (e.data['Stock']['StockName'] == widget.drug) {
+            drugcount++;
+            numbers.add(i);
+          }
+          i++;
+        });
       });
     });
-    return null;
   }
+
   @override
   void initState() {
     super.initState();
