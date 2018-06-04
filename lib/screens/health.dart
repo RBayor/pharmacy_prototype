@@ -28,16 +28,17 @@ class _HealthState extends State<Health> {
     setState(() {
       _isLoading = false;
       this.data = json.decode(response.body);
-      print(data['articles'][2]['author']);
+      //print(data['articles'][2]['author']);
     });
     
   }
+  
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
-          title: Text("Daily Health Tips"),
+          title: Text("Your Daily Health"),
           centerTitle: true,
           actions: <Widget>[
             IconButton(

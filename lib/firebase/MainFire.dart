@@ -6,11 +6,11 @@ class MainFire {
   createpharmdet() {
     CollectionReference cr = Firestore.instance.collection("PharmacyDetails");
     cr.add({
-      "Name": "BB",
+      "Name": "Null",
       "E-mail": "something@gh.com",
-      "PhoneNumber": 2233345667,
-      "Location": "Kumasi",
-      "Stock": ["Panadol", "Tramadol"]
+      "PhoneNumber": null,
+      "Location": "Unavailable",
+      "Stock": ["Unavailable"]
     }).whenComplete(() {
       print("Saved Pharmacy Details");
     });
@@ -19,10 +19,10 @@ class MainFire {
   createownerdet() {
     CollectionReference cr = Firestore.instance.collection("OwnerDeatils");
     cr.add({
-      "Name": "BB",
+      "Name": "Null",
       "E-mail": "something@gh.com",
-      "PhoneNumber": 2233345667,
-      "Owns": "Tech Hostpital"
+      "PhoneNumber": null,
+      "Owns": "Unavailable"
     }).whenComplete(() {
       print("Saved Owner Details");
     });

@@ -60,7 +60,7 @@ class MyDrawer extends Drawer {
                     ListTile(title: Text('Maps'), leading: Icon(Icons.map)),
                     ListTile(
                       title: Text('Favourites'),
-                      leading: Icon(Icons.local_pharmacy),
+                      leading: Icon(Icons.favorite),
                     ),
                     ListTile(
                       title: Text('Health'),
@@ -82,7 +82,7 @@ class MyDrawer extends Drawer {
                         title: Text('Settings'), leading: Icon(Icons.settings)),
                     ListTile(
                         title: Text('About Us'),
-                        leading: Icon(Icons.local_pharmacy)),
+                        leading: Icon(Icons.info)),
                     ListTile(
                         title: Text('Terms of Service'),
                         leading: Icon(Icons.info)),
