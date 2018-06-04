@@ -42,8 +42,8 @@ class _State extends State<MedicationSearch>
       backgroundColor: Colors.cyan[100],
       appBar: new MyAppBar(
         title: new Text("Medication"),
+        icon: Icon(Icons.refresh),
       ),
-      drawer: new MyDrawer(),
       body: new StreamBuilder(
         stream: Firestore.instance.collection('Drugs').snapshots(),
         builder: (context, snapshot) {

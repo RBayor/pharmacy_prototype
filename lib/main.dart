@@ -11,11 +11,19 @@ void main() {
   runApp(new MyApp());
 }
 
-class MyApp extends StatelessWidget {
+
+class MyApp extends StatefulWidget {
+  
   @override
+  _State createState() => new _State();
+}
+
+class _State extends State<MyApp>{
+   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: new Splash(),
       title: 'Navigation',
       routes: <String, WidgetBuilder>{
         '/Home': (BuildContext context) => new Home(),
@@ -23,7 +31,7 @@ class MyApp extends StatelessWidget {
         '/Pharmacies': (BuildContext context)=> new DisplayPharmacies(drugname),
         '/Health' : (BuildContext context) => new Health(),
       },
-      home: new Splash(),
+      
     );
   }
 }

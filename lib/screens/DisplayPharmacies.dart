@@ -46,6 +46,7 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
       backgroundColor: Colors.cyan[100],
       appBar: new MyAppBar(
         title: new Text(widget.drug),
+        icon: Icon(Icons.refresh),
       ),
       body: new Container(
         child: new StreamBuilder(
@@ -88,7 +89,7 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
                             top: 10.0,
                           ),
                           child: ListTile(
-                            leading: CircleAvatar(
+                              leading: CircleAvatar(
                               child: new Icon(Icons.local_pharmacy),
                               radius: 40.0,
                               backgroundColor: Colors.cyan[100],

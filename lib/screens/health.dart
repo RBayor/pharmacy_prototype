@@ -16,19 +16,21 @@ class _HealthState extends State<Health> {
     _fetchData();
   }
 
-  List data;
-  final String url = "https://api.github.com/users";
+  var data;
+  final String url = "https://newsapi.org/v2/top-headlines?sources=medical-news-today&apiKey=afd62a89063d49509471031e7f44c047";
 
   _fetchData() async {
     print("fetching data from network");
 
     http.Response response = await http
         .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
-    var holder = json.decode(response.body);
+      
     setState(() {
       _isLoading = false;
-      data = holder;
+      this.data = json.decode(response.body);
+      print(data['articles'][2]['author']);
     });
+    
   }
 
   @override
@@ -54,7 +56,7 @@ class _HealthState extends State<Health> {
             child: _isLoading == true
                 ? CircularProgressIndicator()
                 : ListView.builder(
-                    itemCount: data.length != null ? data.length : 0,
+                    itemCount: data['articles'].length != null ? data['articles'].length : 0,
                     itemBuilder: (BuildContext context, int index) {
                       return Card(
                         elevation: 5.0,
@@ -63,9 +65,28 @@ class _HealthState extends State<Health> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Image.network(data[index]['avatar_url']),
-                            Text('Name: ${data[index]['login']}'),
-                            Text('Acc Type: ${data[index]['type']}')
+                            Image.network(data['articles'][index]['urlToImage']),
+                            new Padding(
+                              padding: const EdgeInsets.only(
+                                left: 30.0,
+                                right: 10.0,
+                                top: 2.0,
+                                bottom: 5.0
+                              ),
+                              child: ListTile(
+                                 //Image.network(data['articles'][index]['urlToImage']),
+                                title: Text(
+                                  '${data['articles'][index]['title']}',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold
+                                  ),
+                                  ),
+                                subtitle: Text('${data['articles'][index]['description']}'),
+                                onTap: (){}, // We will open the full article here for reading,
+                                onLongPress: (){} // This add article to favorites,
+                              ),
+                            ),
                           ],
                         ),
                       );

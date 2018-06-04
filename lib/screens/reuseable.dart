@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_prototype/screens/health.dart';
 
 // reuseable.dart contains classes that will be repeated throught the program.
 
 // Provides the appbar
 class MyAppBar extends AppBar {
-  MyAppBar({Key key, Widget title})
+  MyAppBar({Key key, Widget title, Icon icon})
       : super(
             key: key,
             title: title,
@@ -12,7 +13,7 @@ class MyAppBar extends AppBar {
             backgroundColor: Colors.lightBlueAccent,
             actions: <Widget>[
               new IconButton(
-                icon: new Icon(Icons.more_vert),
+                icon: icon,
                 onPressed: () {},
               ),
             ]);
@@ -58,15 +59,20 @@ class MyDrawer extends Drawer {
                     ),
                     ListTile(title: Text('Maps'), leading: Icon(Icons.map)),
                     ListTile(
-                      title: Text('Pharmacies'),
+                      title: Text('Favourites'),
                       leading: Icon(Icons.local_pharmacy),
                     ),
                     ListTile(
-                      title: Text('Health Tips'),
+                      title: Text('Health'),
                       leading: Icon(Icons.help),
                       onTap: () {
                         Navigator.of(context).pop();
-                        Navigator.of(context).pushNamed('/Health');
+                        //Navigator.of(context).pushNamed('/Health');
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                              builder: (BuildContext context) => new Health(),
+                            ));
                       },
                     ),
                     Divider(

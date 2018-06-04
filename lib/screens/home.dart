@@ -18,6 +18,7 @@ class _State extends State<Home> {
     return new Scaffold(
       appBar: new MyAppBar(
         title: Text('Regions'),
+        icon: Icon(Icons.more_vert),
       ),
       drawer: new MyDrawer(
         context: context,
