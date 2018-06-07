@@ -17,7 +17,7 @@ class _Grid extends State<Grid> with SingleTickerProviderStateMixin {
   void initState() {
     _controller = AnimationController(
         duration: new Duration(milliseconds: 5000), vsync: this);
-    coloranimation = new ColorTween(begin: Colors.white, end: Colors.lime[50])
+    coloranimation = new ColorTween(begin: Colors.white, end: Colors.lightBlueAccent[100])
         .animate(_controller);
     iconanim =
         new CurvedAnimation(parent: _controller, curve: Curves.bounceOut);

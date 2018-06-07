@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pharmacy_prototype/screens/reuseable.dart';
-import 'package:flutter/animation.dart';
+//import 'package:flutter/animation.dart';
 
 int postnum;
 String name;
@@ -11,12 +11,11 @@ class MedicationSearch extends StatefulWidget {
   _State createState() => new _State();
 }
 
-class _State extends State<MedicationSearch>
-    with SingleTickerProviderStateMixin {
-  Animation animation;
-  AnimationController controller;
+class _State extends State<MedicationSearch>{
+  /*Animation animation;
+  AnimationController controller;*/
 
-  @override
+  /*@override
   void initState() {
     controller = new AnimationController(
         duration: new Duration(milliseconds: 3000), vsync: this);
@@ -34,7 +33,7 @@ class _State extends State<MedicationSearch>
   void dispose() {
     controller.dispose();
     super.dispose();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,7 @@ class _State extends State<MedicationSearch>
       backgroundColor: Colors.cyan[100],
       appBar: new MyAppBar(
         title: new Text("Medication"),
-        icon: Icon(Icons.refresh),
+        icon: Icon(Icons.face),
       ),
       body: new StreamBuilder(
         stream: Firestore.instance.collection('Drugs').snapshots(),

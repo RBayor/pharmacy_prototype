@@ -37,7 +37,7 @@ void initState() {
   Widget build(BuildContext context) {
       // TODO: implement build
       return new Scaffold(
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.lightBlue,
         body: new Center(
           child: new Container(
           margin: EdgeInsets.only(
@@ -90,10 +90,12 @@ void initState() {
                 margin:  const EdgeInsets.only(
                   top: 50.0
                 ),
-                child: new FlatButton(
+                child: new RaisedButton(
                 child: new Text("Next",textScaleFactor: 2.0,style: new TextStyle(
-                  color: _animationcolor.value
-                ),),
+                  color: _animationcolor.value,    
+                ),
+                ),
+                color: Colors.lightBlueAccent,
                 onPressed: (){Navigator.of(context).pushNamedAndRemoveUntil('/Home',(Route<dynamic>route)=>false);},
               ),
               )

@@ -5,7 +5,7 @@ import 'package:pharmacy_prototype/screens/health.dart';
 
 // Provides the appbar
 class MyAppBar extends AppBar {
-  MyAppBar({Key key, Widget title, Icon icon})
+  MyAppBar({Key key, Widget title, Icon icon, Function refreshTask})
       : super(
             key: key,
             title: title,
@@ -14,7 +14,7 @@ class MyAppBar extends AppBar {
             actions: <Widget>[
               new IconButton(
                 icon: icon,
-                onPressed: () {},
+                onPressed: () {refreshTask;},
               ),
             ]);
 }
@@ -29,7 +29,7 @@ class MyDrawer extends Drawer {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(14.0),
-                color: Colors.lightBlueAccent,
+                color: Colors.black87,
                 child: Column(
                   children: <Widget>[
                     UserAccountsDrawerHeader(

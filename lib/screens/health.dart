@@ -45,7 +45,7 @@ class _HealthState extends State<Health> {
       if (fav[i]) {
         fav[i] = false;
       } else {
-        fav[i] = true;
+        fav[i] = true; 
       }
     });
   }
@@ -60,7 +60,6 @@ class _HealthState extends State<Health> {
             IconButton(
               icon: Icon(Icons.refresh),
               onPressed: () {
-                print('Refreshing...');
                 setState(() {
                   _isLoading = true;
                 });
@@ -79,7 +78,7 @@ class _HealthState extends State<Health> {
                     itemBuilder: (BuildContext context, int index) {
                       _favnewcount(data['articles'].length);
                       return Card(
-                        elevation: 5.0,
+                        elevation: 8.0,
                         margin: EdgeInsets.only(
                             left: 12.0, right: 12.0, top: 10.0, bottom: 5.0),
                         child: Column(
@@ -89,12 +88,11 @@ class _HealthState extends State<Health> {
                                 .network(data['articles'][index]['urlToImage']),
                             new Padding(
                               padding: const EdgeInsets.only(
-                                  left: 30.0,
+                                  left: 16.0,
                                   right: 10.0,
                                   top: 2.0,
                                   bottom: 5.0),
                               child: ListTile(
-                                  //Image.network(data['articles'][index]['urlToImage']),
                                   title: Text(
                                     '${data['articles'][index]['title']}',
                                     style: TextStyle(
@@ -102,13 +100,29 @@ class _HealthState extends State<Health> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   subtitle: Text(
-                                      '${data['articles'][index]['description']}'),
+                                      '${data['articles'][index]['description']}',
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                      ),
+                                        ),
                                   onTap:
                                       () {}, // We will open the full article here for reading,
                                   onLongPress: () {
                                     favchange(index);
+                                    
                                   } // This add article to favorites,
                                   ),
+                            ),
+                            new Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                new Padding(
+                                  padding: const EdgeInsets.only(left: 30.0),
+                                  child: Text(
+                                    'By: ${data['articles'][index]['author']}\nSource: ${data['articles'][index]['source']['name']}\nDate: ${data['articles'][index]['publishedAt']}'
+                                    ),
+                                ),
+                              ],
                             ),
                             new Row(
                               mainAxisAlignment: MainAxisAlignment.end,

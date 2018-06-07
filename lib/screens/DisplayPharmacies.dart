@@ -36,8 +36,8 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
 
   @override
   void initState() {
-    super.initState();
     getcount();
+    super.initState();
   }
 
   @override
@@ -66,54 +66,55 @@ class _DisplayPharmaciesState extends State<DisplayPharmacies> {
                       Icons.mood_bad,
                       size: 70.0,
                     ),
-                    new Text("Nothing To Show Here Yet")
+                    new Text("Pharmacy Unavailable")
                   ],
                 ),
               );
             } else {
               return new ListView.builder(
-                itemCount: drugcount,
-                itemBuilder: (context, index) {
-                  DocumentSnapshot ds = snapshot.data.documents[numbers[index]];
-                  return new Card(
-                    elevation: 10.0,
-                    margin: EdgeInsets.only(
-                        left: 12.0, right: 12.0, top: 10.0, bottom: 5.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        new Padding(
-                          padding:  EdgeInsets.only(
-                            left: 30.0,
-                            right: 10.0,
-                            top: 10.0,
-                          ),
-                          child: ListTile(
-                              leading: CircleAvatar(
-                              child: new Icon(Icons.local_pharmacy),
-                              radius: 40.0,
-                              backgroundColor: Colors.cyan[100],
-                            ),
-                            title: getpharm(ds),
-                            subtitle:
-                                Text('distance to the pharmacy could go here'),
-                          ),
-                        ),
-                        ButtonTheme.bar(
-                          child: ButtonBar(
+                      itemCount: drugcount,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot ds =
+                            snapshot.data.documents[numbers[index]];
+                        return new Card(
+                          elevation: 10.0,
+                          margin: EdgeInsets.only(
+                              left: 12.0, right: 12.0, top: 10.0, bottom: 5.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                              FlatButton(
-                                child: const Text('Locate in Map'),
-                                onPressed: () {},
+                              new Padding(
+                                padding: EdgeInsets.only(
+                                  left: 30.0,
+                                  right: 10.0,
+                                  top: 10.0,
+                                ),
+                                child: ListTile(
+                                  leading: CircleAvatar(
+                                    child: new Icon(Icons.local_pharmacy),
+                                    radius: 40.0,
+                                    backgroundColor: Colors.cyan[100],
+                                  ),
+                                  title: getpharm(ds),
+                                  subtitle: Text(
+                                      'distance to the pharmacy could go here'),
+                                ),
+                              ),
+                              ButtonTheme.bar(
+                                child: ButtonBar(
+                                  children: <Widget>[
+                                    FlatButton(
+                                      child: Text('Locate in Map'),
+                                      onPressed: () {},
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              );
+                        );
+                      },
+                    );
             }
           },
         ),
